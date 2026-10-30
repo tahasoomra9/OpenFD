@@ -77,3 +77,4 @@ A gamepad works too, through SDL.
 | Tab | Select | The menu | Close it |
 
 The earlier rewrite `new-src/` (`hg2`) is retired, kept at the tag `new-src-final`.
+# OpenFD
