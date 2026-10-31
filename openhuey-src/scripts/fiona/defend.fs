@@ -136,7 +136,7 @@ fvariable shove-pace
 create ahead-pt /vec allot   \ (her radius ahead)
 : ahead-pt! ( -- )  her-yaw f@ self body-dims fdrop ahead-pt her-at vec-ahead ;
 : kicking ( -- )
-    her-recoil @ 0= if  settled? 0= if  0e 1.0756e her-yaw f@ rotate-by move-by  else  root-move  then  then
+    her-recoil @ 0= if  settled? 0= if  0e 1.0756e dt 30e f* f* her-yaw f@ rotate-by move-by  else  root-move  then  then
     ended? if
         her-struck @ 2 and 0= if  kick-reaction hewie-id send reaction  then
         10e add-fear  0 her-run-t !  to-idle exit
@@ -147,7 +147,6 @@ create ahead-pt /vec allot   \ (her radius ahead)
     {: mask :}  mask if  kick-blow 5 boosted 1 mask strike  then   \ (Fortis's x3 too: Fiona_StateKick's 5 x +0xA04)
     5 her-at vec@ -1e blow-at ;   \ (the creatures 5 as it is)
 : kick-start ( -- )
-    root-move
     settled? 0= if  exit  then
     kick-sound 0 her-sound  kick-anim -1 play-table  1 her-blow-n +!  0 her-struck !  ['] kicking her-act ! ;
 
