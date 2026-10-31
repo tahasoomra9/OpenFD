@@ -1,11 +1,15 @@
 
-# OpenHuey
-<img width="300" height="400" alt="h" src="https://github.com/user-attachments/assets/224650eb-86ee-4886-8f7a-74fb6e9bcf45" />
+# OpenFD
 
-Another kind of Hewie (Discord setup at https://discord.gg/7sMGvfBAE)
+OpenFD is an FPS-unlocked fork of [OpenHuey](https://github.com/ArnautDaniel/OpenHuey),
+focused on bringing Haunting Ground's gameplay simulation to a smooth 60 Hz on PC while
+preserving the original 30 Hz behavior when using the PS2-style preset.
 
-**Download:** [OpenHuey latest](https://github.com/ArnautDaniel/OpenHuey/releases/tag/openhuey-latest)
-(Linux and Windows, rebuilt on every merge) · [all releases](https://github.com/ArnautDaniel/OpenHuey/releases).
+This project is dedicated to my little brother, who wanted me to build a smoother version
+of OpenHuey.
+
+**Download:** [OpenFD releases](https://github.com/tahasoomra9/OpenFD/releases)
+(Linux and Windows) · [upstream OpenHuey releases](https://github.com/ArnautDaniel/OpenHuey/releases).
 You need your own copy of Haunting Ground (USA) for the PS2: start `openhuey` and pick its disc
 image (`.iso`) the first time - it is imported once into `library/` beside it. **No game data is
 included.** To update: UPDATE on the title (or `openhuey --update`). When an update reads more of
@@ -14,7 +18,7 @@ to import the disc again - pick the `.iso` once more; saves and settings are kep
 --import disc.iso`). Mods: `mods/` beside it
 ([`openhuey-src/docs/modding.md`](openhuey-src/docs/modding.md)).
 
-OpenHuey rebuilds **Haunting Ground** (Capcom, PS2, 2005, `SLUS_210.75`) for PC, in three parts:
+The OpenHuey engine rebuilds **Haunting Ground** (Capcom, PS2, 2005, `SLUS_210.75`) for PC, in three parts:
 
 | Part | Path | What it is |
 |---|---|---|
@@ -26,6 +30,17 @@ OpenHuey rebuilds **Haunting Ground** (Capcom, PS2, 2005, `SLUS_210.75`) for PC,
 Hewie, the stalkers, items and the menu, saving, the game over and the endings, the mini-game
 where you play as Hewie, and the extras room's movies and galleries. Not yet: a few of the model
 gallery's details (some figures' second textures and idles).
+
+## OpenFD changes
+
+- Gameplay simulation can run at a true 60 Hz instead of the original locked 30 Hz.
+- The simulation uses one fixed-timestep code path, with 30 Hz retained as the authored-behavior baseline.
+- The **as on the PS2** preset remains locked to 30 Hz.
+- Movement, animation, camera easing, doors, effects, and other frame-based behavior are scaled
+  for the selected simulation rate.
+- Audio keeps its own clock instead of being driven by simulation tick counts.
+- Cutscenes and FMV playback retain their authored 30 Hz timing.
+- Movie playback includes a compatible MPEG-2 decoder lookup fallback for supported FFmpeg runtimes.
 
 ## Building
 
@@ -77,4 +92,3 @@ A gamepad works too, through SDL.
 | Tab | Select | The menu | Close it |
 
 The earlier rewrite `new-src/` (`hg2`) is retired, kept at the tag `new-src-final`.
-# OpenFD
